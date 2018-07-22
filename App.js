@@ -2,7 +2,8 @@ import React from 'react';
 import {
   StyleSheet, Text, View,
   YellowBox,
-  PanResponder
+  PanResponder,
+  TouchableOpacity
 } from 'react-native'
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures'
 
@@ -12,12 +13,14 @@ YellowBox.ignoreWarnings = ([
   'Remote debugger is in a background',
 ])
 
-const DumbComponent = ({ gestureName }) => (
-  <View>
+const DumbComponent = ({ me, gestureName='' }) => (
+  <TouchableOpacity
+    style={{height:200,width:200,backgroundColor:'rgba(255,255,255,0.57)'}}
+    onPress={() => me(`hellow I swiped: ${gestureName}`)}>
     <Text style={{
         fontSize:27
       }}>onSwipe callback received gesture: {gestureName}</Text>
-  </View>
+  </TouchableOpacity>
 )
 
 export default class App extends React.Component {
@@ -66,6 +69,9 @@ export default class App extends React.Component {
         break;
     }
   }
+  logMe = (Me='Me...') => {
+    log(Me)
+  }
   render() {
     const config = {
       velocityThreshold: 0.3,
@@ -74,7 +80,8 @@ export default class App extends React.Component {
     log('something mounted',this)
     const { gestureName, backgroundColor } = this.state
     const dumbProps = {
-      gestureName // gestureName:gestureName || this.state.guestureName
+      gestureName, // gestureName:gestureName || this.state.guestureName
+      me:this.logMe
     }
     return (
       <GestureRecognizer
