@@ -1,4 +1,5 @@
 import { TEST_ACTION } from "./types";
+import log from '../../../log';
 
 export const setExampleText = text => {
     return {
@@ -9,9 +10,31 @@ export const setExampleText = text => {
 
 
 // Using Redux Thunk to do Async calls in Redux because redux is syncranous 
-export const setAsyncEampleText = text => {
-    return (dispatch) => {
-        // Async Call in here!!
-        // Fetch.get(API)
-    }
+
+export const dispatchActionExample = text => dispatch => {
+    log(text);
+
+    // Fetch down here with api's
+    dispatch(setExampleText(text));
 }
+/*Same as above */
+// export const dispatchActionExample = text => {
+//     return dispatch => {
+
+//     }
+// }
+
+export const asyncDispatchActionExample = text => async dispatch => {
+    log(text)
+
+    // Async Stuff here like API Calls
+    // await fetch.GET()
+    dispatch(setExampleText(text));
+}
+
+/*Same as above */
+// export const asyncDispatchActionExample = text => {
+//     return async dispatch => {
+
+//     }
+// }
