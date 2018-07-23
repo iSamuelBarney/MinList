@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
-import { Footer, IconButton } from '../../components'
-import { Entypo, Feather, Octicons } from '@expo/vector-icons';
+import { Footer } from '../../components'
 
 
 
@@ -36,6 +35,4 @@ const styles = StyleSheet.create({
 
 });
 
-export {
-    Home
-};
+export default Home;
