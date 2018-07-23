@@ -6,7 +6,9 @@ import {Home} from '../screens';
 
 export default createStackNavigator(
     {
-        Home
+        Home: {
+            screen: Home
+        }
     },
     {
         initialRouteName: 'Home'
