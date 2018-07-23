@@ -1,46 +1,41 @@
-import React, {Component} from 'react';
-import {View,Text,StyleSheet} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
+import { Footer, IconButton } from '../../components'
+import { Entypo, Feather, Octicons } from '@expo/vector-icons';
+
 
 
 class Home extends Component {
     render() {
-        const {header, footerContainer, footer, iconContainer} = styles;
+        const { headerFont } = styles;
         return (
-            <View style={{flex:1}}>
-                <Text style={header}>HOME SCREEN</Text>
-                <View style={footerContainer} >
-                    <View style={footer}>
+            <View style={{ flex: 1 }}>
+                <Text style={headerFont}>HOME SCREEN</Text>
 
-                    </View>
-                </View>
+
+
+
+                {/* Footer w/ IconButton Components */}
+                <Footer
+                    onBack={()=> console.log('Going Back')}
+                    onHome={()=> console.log('Go Home')}
+                    onMenu={()=> console.log('GO to MEnu')}
+                 />
             </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
-    header: {
+    headerFont: {
         textAlign: 'center',
         paddingTop: 15,
         fontSize: 25,
         fontWeight: '500'
     },
-    footerContainer: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'flex-end'
-    },
-    footer: {
-        flex:1,
-        backgroundColor: 'white',
-        height: 30
-    },
-    iconContainer: {
 
-    }
 });
 
-export{
+export {
     Home
 };
